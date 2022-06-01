@@ -57,7 +57,18 @@
 				</div>	
 			</div>
 		</div>
-		
+		{{ user_list.1 }}
+        {% for current_user in user_list %}
+            {% if current_user.age >= 30 %}
+                <p>
+                Name: {{ current_user.first_name|title }} {{ current_user.last_name|title }}<br>
+                Age: {{ current_user.age}}
+                </p>
+                {% if not forloop.last %}
+                <hr>
+                    {% endif %}
+            {% endif %}
+        {% endfor %}
 		<div class="clr"></div>
 
 	</div>
@@ -79,7 +90,7 @@
                 </form>
             </div>
         </div>
-        <p class="small">&copy; GB 2017</p>
+        <p class="small">&copy; GB {% now "d b Y" %}</p>
         <div class="social">
             <a href="#" class="social1"></a>
             <a href="#" class="social2"></a>
